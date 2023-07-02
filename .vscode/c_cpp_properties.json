@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/tools/Xilinx/Vitis/2021.2/include/**",
+                "/tools/Xilinx/Vitis/2021.2/include/",
+                "/tools/Xilinx/Vitis_HLS/2021.2/include/",
+                "/tools/Xilinx/Vitis_HLS/2021.2/include/**",
+                "/opt/xilinx/xrt/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
