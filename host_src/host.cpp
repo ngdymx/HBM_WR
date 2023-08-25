@@ -38,20 +38,6 @@ int main(int argc, char* argv[]){
     xrt::uuid overlay_uuid = device.load_xclbin(xclbinFilename);
     printf("Loaded Overlay!\n");
    
-     //xrt::ip dp_0 = xrt::ip(device, overlay_uuid, "auto_data_pack:{auto_data_pack_0}");
-     xrt::ip line_buffer_1 = xrt::ip(device, overlay_uuid, "line_buffer:{line_buffer_1}");
-     printf("Connected to ips!\n");
-
-    // dp_0.write_register(0x10, 2);
-    unsigned int LINE_BUFFER_OFFSET_LSB = 0x00000000;
-    unsigned int LINE_BUFFER_OFFSET_MSB = 0x00000000;
-    line_buffer_1.write_register(0x10, LINE_BUFFER_OFFSET_LSB);
-    line_buffer_1.write_register(0x14, LINE_BUFFER_OFFSET_MSB);
-
-    line_buffer_1.write_register(0x1c, LINE_BUFFER_OFFSET_LSB);
-    line_buffer_1.write_register(0x20, LINE_BUFFER_OFFSET_MSB);
-    // printf("Finished setting ips!\n");
-
     // user logic
     const int signal_size = 1 << 15;
     int (*data_in) = new int[signal_size];
