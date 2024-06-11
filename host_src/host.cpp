@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
     printf("Loaded Overlay!\n");
    
     // user logic
-    const int signal_size = 1 << 15;
+    const int signal_size = ROW * COL;
     int (*data_in) = new int[signal_size];
     int (*data_out) = new int[signal_size];
    
@@ -110,9 +110,9 @@ int main(int argc, char* argv[]){
         for (int i = 0; i < signal_size; i++){
 		//	int temp1 = data_in[i] & (~0x0002000);
 		//	int temp2 = data_out[i] & (~0x0002000);
-		if (data_in[i] != data_out[i]){
-			fprintf(fp, "%08d\t0x%08x\t0x%08x\t%08x\n",i,  data_in[i], data_out[i], data_out[i] ^ data_in[i]);
-		}
+            if (data_in[i] != data_out[i]){
+                fprintf(fp, "%08d\t0x%08x\t0x%08x\t%08x\n",i,  data_in[i], data_out[i], data_out[i] ^ data_in[i]);
+            }
         }
         fclose(fp);
     }

@@ -6,6 +6,9 @@
 #include "ap_axi_sdata.h"
 
 //#define DEBUG
+const int ROW = 256;
+const int COL = 256;
+const int SIGNAL_SIZE = ROW * COL;
 
 typedef ap_int<128> data_cell; // data appears on the interface
 

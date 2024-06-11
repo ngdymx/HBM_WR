@@ -69,6 +69,7 @@ void cell_s2p(hls::stream<data_cell>& cell_stream_in, hls::stream<data_cell_pack
 void write2HBM(hls::burst_maxi<data_cell_pack> mem, hls::stream<data_cell_pack>& stream_in, hls::stream<ap_uint<1>>& flag_stream_out){
 #pragma HLS INTERFACE ap_ctrl_none port = return
 
+// data tyep 512 bits = 64 Bytes, 64 burst, so 12 is the 64 * 64 = 2 ^ 12
     for(int count = 0; count < (HBM_SIZE >> 12); count++){
 #pragma HLS PIPELINE off
             mem.write_request((HBM_OFFSET >> 6) + (count << 6), 64);
@@ -112,7 +113,7 @@ void layer_buffer_hbm00(hls::burst_maxi<data_cell_pack> mem1, hls::burst_maxi<da
 #pragma HLS INTERFACE m_axi port=mem2 bundle=gmem2 num_read_outstanding=4 num_write_outstanding=1 latency=4 offset=slave
 
 
-    hls_thread_local hls::stream<ap_uint<1>, 96> flag_stream_1;
+    hls_thread_local hls::stream<ap_uint<1>, (SIGNAL_SIZE >> 6) > flag_stream_1;
     hls_thread_local hls::stream<data_cell_pack> pack_stream_out;
     hls_thread_local hls::stream<data_cell_pack> pack_stream_in;
 
