@@ -2,7 +2,13 @@
 #include "ap_axi_sdata.h"
 #include "hls_burst_maxi.h"
 #include "./types.hpp"
+// One HBM channel size is 4Gb, so HBM_SIZE is 2 ^ 32, 0x1000-0000 
 #define HBM_SIZE 0x10000000
+// HBM[0:1] offset is 0x0000,0000
+// HBM[2:3] offset is 0x2000,0000
+// HBM[4:5] offset is 0x4000,0000
+// HBM[16:17] offset is 0x10000,0000
+// and so on
 #define HBM_OFFSET 0x00000000
 
 void cell_p2s(hls::stream<data_cell_pack>& data_cell_pack_stream_in, hls::stream<data_cell>& cell_stream_out){
