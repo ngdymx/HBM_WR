@@ -2,7 +2,7 @@
 #include "ap_axi_sdata.h"
 #include "hls_burst_maxi.h"
 #include "./types.hpp"
-// One HBM channel size is 4Gb, so HBM_SIZE is 2 ^ 32, 0x1000-0000 
+// One HBM pesudo channel size is 256MB, so HBM_SIZE is 2^28, 0x1000-0000 
 #define HBM_SIZE 0x10000000
 // HBM[0:1] offset is 0x0000,0000
 // HBM[2:3] offset is 0x2000,0000
